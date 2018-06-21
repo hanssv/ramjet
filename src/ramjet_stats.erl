@@ -84,7 +84,7 @@ code_change(_OldVsn, State, _Extra) ->
 
 prepare_dir() ->
     CSVDir       = csv_dir(),
-    ok           = file:make_dir(CSVDir),
+    ok           = filelib:ensure_dir(filename:join(CSVDir, "PLACEHOLDER")),
     {ok, WD}     = file:get_cwd(),
     CurrentDir   = "tests/current",
     file:delete(CurrentDir),
