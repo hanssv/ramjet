@@ -90,6 +90,7 @@ prepare_dir() ->
     file:delete(CurrentDir),
     Config       = application:get_all_env(ramjet),
     file:write_file(CSVDir ++ "/test.config", io_lib:fwrite("~p.\n",[Config])),
+    _            = delete_symlink(CurrentDir),
     ok           = file:make_symlink(WD ++ "/" ++ CSVDir, CurrentDir),
     CSVDir.
 
@@ -202,3 +203,9 @@ timestamp() -> erlang:system_time().
 
 counter_sum_from_all_nodes(CounterName) ->
     lists:sum(ramjet:apply_on_all_nodes(folsom_metrics, get_metric_value, [CounterName])).
+
+delete_symlink(Path) ->
+    case file:delete(Path) of
+        ok              -> ok;
+        {error, enoent} -> ok
+    end.
