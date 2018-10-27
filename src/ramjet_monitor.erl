@@ -34,6 +34,8 @@ handle_info(check, Activity) ->
                 false ->
                     io:format("test run finished.\nbye.\n", [])
             end,
+            Handler = ramjet:config(handler),
+            Handler:terminate_final(),
 
             init:stop(),
             {noreply, stopped};
