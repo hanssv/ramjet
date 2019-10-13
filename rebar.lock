@@ -2,7 +2,7 @@
 [{<<"bear">>,{pkg,<<"bear">>,<<"0.8.5">>},1},
  {<<"folsom">>,{pkg,<<"folsom">>,<<"0.8.5">>},0},
  {<<"ponos">>,
-  {git,"git@github.com:klarna/ponos.git",
+  {git,"https://github.com/klarna/ponos.git",
        {ref,"5b202cc3dda2aca2c08de1dba152681f26a8f8dc"}},
   0}]}.
 [
